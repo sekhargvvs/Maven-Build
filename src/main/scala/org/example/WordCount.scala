@@ -11,16 +11,18 @@ object WordCount {
     val sc = new SparkContext(conf)
 
     // Step 1: Read input text file
-    val singleWordRdd = sc.parallelize(List("hello, how are you doing"))
+    val singleWordRdd = sc.parallelize(List("hello, how are"))
 
-    // Step 2: Map each word to a key-value pair (word, 1)
+    // Step 2: Map each word to a key-value pair
     val wordCountsRdd = singleWordRdd.map(word => (word, 1))
 
-    // Step 3:  ReduceByKey to count the occurrences of each word
+    // Step 3:  ReduceByKey to count the occurrences
     val totalCountsRdd = wordCountsRdd.reduceByKey((a, b) => a + b)
 
     // Step 4:  Print the results (you'd usually save this to a file)
     totalCountsRdd.collect().foreach(println)
+
+    //check if this is changing
 
     sc.stop()
   }
