@@ -22,6 +22,8 @@ object WordCount {
     // Step 4:  Print the results (you'd usually save this to a file)
     totalCountsRdd.collect().foreach(println)
 
+    //check if this is changing
+
     sc.stop()
   }
 
